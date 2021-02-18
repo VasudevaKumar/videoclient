@@ -1,0 +1,54 @@
+
+
+
+
+<div class="content" *ngIf="isDataLoaded">
+
+    <div class="col-md-12 float-right text-right"><a href="" style="color:#000;" [routerLink]="['/addvideo']">Add video</a>
+    </div>
+
+
+    <div class="col-md-6 no-gutter-right">
+      <div class="search-area">
+        
+          <div class="form-group">
+            <input type="text" name="searchField" class="form-control" placeholder="Search" (keydown.enter)="filterVideos($event.target.value); false;" (change)="filterVideos($event.target.value); false;" (blur)="filterVideos($event.target.value); false;">
+          </div>
+        
+      </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Video Name</th>
+            <th scope="col">Video</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="3" *ngIf="filterListVideos.length == 0"> No videos available</td>
+        </tr>
+          <tr *ngFor="let video of filterListVideos | paginate: { itemsPerPage:(numberPerPage), currentPage: p}; let i=index">
+            <th scope="row">{{video.id}}</th>
+            <td>{{video.videoname}}</td>
+            <td>
+
+                <video width="320" height="240" controls>
+                    <source src="assets/uploads/{{video.videopath}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>
+
+                </td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+
+      <pagination-controls (pageChange)="p = $event" directionLinks="true" autoHide="true" ></pagination-controls>
+
+  </div>
+  

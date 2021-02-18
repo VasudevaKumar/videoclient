@@ -1,0 +1,52 @@
+
+
+
+
+<div class="content">
+  <div class="col-md-12 float-right text-right"><a href="" style="color:#000;" [routerLink]="['/videos']">List Of Videos</a>
+  </div>
+
+    <div class="header">
+        <h1>Angular File Upload</h1>
+    </div>
+    <div class="row margin25">
+
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+          <form action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="name">Video File Name:</label>
+              <input type="alphanum" class="form-control" id="fileName" name="fileName" (change)="filenameChange($event.target.value)">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Upload File:</label>
+              <div class="custom-file">
+                <input  (change)="fileChange($event)"  type="file"  class="custom-file-input"  id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01" accept="video/*">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+
+            </div>
+
+            <div class="col-md-12 nogutter float-left">
+            <div id="file-upload-filename"></div>
+          </div>
+            <div class="col-md-4 nogutter float-left">
+              <span class="input-group-text upload"  (click)="upload()"  id="btnUpload">Upload</span>
+            </div>   
+            <div class="col-md-8 nogutter float-right text-right" *ngIf="!isValiedFile">
+              <div class="alert-danger" style="padding: 8px; margin-left: 5px;">{{errMsg}}</div>
+            </div>
+            
+
+          </form>
+
+        
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
